@@ -98,3 +98,19 @@ Ao final desta fase, o usuário deve conseguir:
 - mobile bom na tela pública de ciência
 - arquitetura de front organizada para permitir integração posterior
 
+---
+
+## Publicação na Vercel (quando aparece 404 ou “Ready Stale”)
+
+O código Next.js está em **`frontend/`**. Se a Vercel usar só a raiz do Git, o build não gera o app (build de poucos segundos) e o site mostra **404: NOT_FOUND**. O painel pode ficar em **Ready Stale** ligado a um **commit antigo** enquanto os deploys novos falham no GitHub (X vermelho).
+
+**Checklist (faça nesta ordem):**
+
+1. **Vercel** → projeto **placar-dealers** → **Settings** → **General** → **Root Directory** → **Edit** → digite exatamente **`frontend`** → **Save**.
+2. **Settings** → **General** → **Node.js Version** → use **20.x** ou **22.x** (Next 16).
+3. **Deployments** → abra o deploy com **falha** (último commit da `main`) → **Build Logs** → se aparecer erro, copie as últimas linhas (para suporte).
+4. **Deployments** → nos três pontos do último deploy → **Redeploy** → desmarque **“Use existing Build Cache”** → confirmar.
+5. Abra **`https://<seu-projeto>.vercel.app/`** — deve redirecionar para **`/rv`**.
+
+No repositório, o workflow **CI frontend** (GitHub Actions) roda `npm ci` e `npm run build` em `frontend/`. Se o ícone verde aparecer no GitHub e a Vercel ainda falhar, o problema é só configuração do projeto na Vercel (passos 1–2).
+
