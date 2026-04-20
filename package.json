@@ -1,0 +1,10 @@
+{
+  "name": "placar-dealers",
+  "private": true,
+  "description": "Monorepo: Next.js em /frontend. Na Vercel use Root Directory = frontend (recomendado).",
+  "scripts": {
+    "build": "cd frontend && npm ci && npm run build",
+    "dev": "cd frontend && npm run dev",
+    "lint": "cd frontend && npm run lint"
+  }
+}
