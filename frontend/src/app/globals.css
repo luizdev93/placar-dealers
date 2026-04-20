@@ -30,7 +30,7 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: #f1f1f1;
   --foreground: oklch(0.10 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.10 0 0);
@@ -63,13 +63,14 @@
     width: 100%;
     max-width: 100%;
     -webkit-text-size-adjust: 100%;
+    background: #f1f1f1;
   }
   body {
     font-family: var(--font-roboto), 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 400;
     color: #252525;
-    background: #ffffff;
+    background: #f1f1f1;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -219,7 +220,7 @@
 /* ─── Container do módulo RV ─── */
 .rv-content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
   padding: 0 20px 24px 20px;
   box-sizing: border-box;
 }
