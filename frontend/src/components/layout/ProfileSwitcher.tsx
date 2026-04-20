@@ -18,9 +18,27 @@ export function ProfileSwitcher() {
   }, {} as Record<UserProfile, typeof allUsers>);
 
   return (
-    <div className="fixed bottom-3 right-3 z-50">
+    <div className="relative z-[200] flex-shrink-0" style={{ alignSelf: "center" }}>
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className={cn(
+          "flex items-center gap-1.5 px-2.5 py-1.5 text-white text-[11px] font-medium transition-all shadow rounded-sm",
+          open ? "bg-[#333333]" : "bg-[#000000] hover:bg-[#333333]"
+        )}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+      >
+        <User size={12} />
+        <span>{PROFILE_LABELS[currentUser.perfil]}</span>
+        <ChevronUp size={10} className={cn("transition-transform flex-shrink-0", open ? "" : "rotate-180")} />
+      </button>
+
       {open && (
-        <div className="mb-1.5 bg-white border border-[#E8E8E8] overflow-hidden w-56 shadow-lg">
+        <div
+          className="absolute right-0 top-full z-[201] mt-1 w-56 overflow-hidden border border-[#E8E8E8] bg-white shadow-lg"
+          role="listbox"
+        >
           <div className="bg-[#F2F2F2] border-b border-[#E8E8E8] px-2.5 py-1.5">
             <p className="text-[10px] font-semibold text-[#666] uppercase tracking-wide">Trocar perfil (mock)</p>
           </div>
@@ -31,6 +49,7 @@ export function ProfileSwitcher() {
                 {users.map((user) => (
                   <button
                     key={user.id}
+                    type="button"
                     onClick={() => { setCurrentUser(user); setOpen(false); }}
                     className={cn(
                       "w-full flex items-center gap-2 px-2 py-1 text-left transition-colors text-[12px]",
@@ -49,18 +68,6 @@ export function ProfileSwitcher() {
           </div>
         </div>
       )}
-
-      <button
-        onClick={() => setOpen(!open)}
-        className={cn(
-          "flex items-center gap-1.5 px-2.5 py-1.5 text-white text-[11px] font-medium transition-all shadow",
-          open ? "bg-[#333333]" : "bg-[#000000] hover:bg-[#333333]"
-        )}
-      >
-        <User size={12} />
-        <span className="hidden sm:inline">{PROFILE_LABELS[currentUser.perfil]}</span>
-        <ChevronUp size={10} className={cn("transition-transform", open ? "" : "rotate-180")} />
-      </button>
     </div>
   );
 }

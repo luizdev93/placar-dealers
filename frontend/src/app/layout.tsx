@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { IframeResizeBridge } from "@/components/IframeResizeBridge";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={roboto.variable}>
       <body className="antialiased">
+        <IframeResizeBridge />
         {children}
         <Toaster position="top-right" richColors />
       </body>

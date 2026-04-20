@@ -35,7 +35,7 @@ function CienciaContent() {
   /* ── token inválido ── */
   if (!session) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-5">
+      <div className="min-h-0 w-full bg-white flex items-center justify-center p-5 py-16">
         <div className="max-w-sm w-full text-center">
           <AlertCircle size={32} className="text-[#D80030] mx-auto mb-3" />
           <h1 className="text-base font-semibold text-[#333] mb-1">Link inválido ou expirado</h1>
@@ -50,7 +50,7 @@ function CienciaContent() {
   /* ── já assinado ── */
   if (session.status === "assinado") {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-5">
+      <div className="min-h-0 w-full bg-white flex items-center justify-center p-5 py-16">
         <div className="max-w-sm w-full">
           <div className="text-center mb-4">
             <div className="w-14 h-14 bg-[#EDFAE9] border border-[#C6EFC0] flex items-center justify-center mx-auto mb-3">
@@ -76,7 +76,7 @@ function CienciaContent() {
 
   if (!rv || !dealer) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center p-5">
+      <div className="min-h-0 w-full bg-white flex items-center justify-center p-5 py-16">
         <div className="max-w-sm w-full text-center">
           <AlertCircle size={32} className="text-[#888] mx-auto mb-3" />
           <h1 className="text-base font-semibold text-[#333] mb-1">Relatório não encontrado</h1>
@@ -100,7 +100,7 @@ function CienciaContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-0 w-full bg-white flex flex-col">
       {/* Stepper compacto */}
       {step < 3 && (
         <div className="border-b border-[#EBEBEB] px-4 py-2 flex-none bg-[#FAFAFA]">

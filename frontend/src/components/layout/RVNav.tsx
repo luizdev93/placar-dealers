@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { FileText, Calendar, Settings } from "lucide-react";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { usePermissions } from "@/hooks/usePermissions";
+import { ProfileSwitcher } from "@/components/layout/ProfileSwitcher";
 
 const navItems = [
   { href: "/rv", label: "Relatórios de Visita", icon: FileText },
@@ -42,38 +43,53 @@ export function RVNav() {
   ];
 
   return (
-    <div className="rv-nav" style={{ display: "flex", alignItems: "center", gap: 0 }}>
-      {allItems.map((item) => {
-        const active = isActive(item.href);
-        return (
-          <Link
-            key={item.href}
-            href={item.href}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              padding: "8px 14px",
-              fontSize: 14,
-              fontWeight: 600,
-              color: active ? "#000000" : "#616161",
-              textDecoration: "none",
-              borderBottom: active ? "2px solid #000000" : "2px solid transparent",
-              marginBottom: -1,
-              whiteSpace: "nowrap",
-            }}
-            onMouseEnter={(e) => {
-              if (!active) (e.currentTarget as HTMLAnchorElement).style.color = "#000000";
-            }}
-            onMouseLeave={(e) => {
-              if (!active) (e.currentTarget as HTMLAnchorElement).style.color = "#616161";
-            }}
-          >
-            <item.icon size={15} />
-            {item.label}
-          </Link>
-        );
-      })}
+    <div
+      className="rv-nav"
+      style={{
+        display: "flex",
+        alignItems: "stretch",
+        justifyContent: "space-between",
+        gap: 12,
+        flexWrap: "wrap",
+      }}
+    >
+      <div
+        className="rv-nav-tabs-scroll"
+        style={{ display: "flex", alignItems: "center", gap: 0, flex: "1 1 auto", minWidth: 0, flexWrap: "nowrap" }}
+      >
+        {allItems.map((item) => {
+          const active = isActive(item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                padding: "8px 14px",
+                fontSize: 14,
+                fontWeight: 600,
+                color: active ? "#000000" : "#616161",
+                textDecoration: "none",
+                borderBottom: active ? "2px solid #000000" : "2px solid transparent",
+                marginBottom: -1,
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => {
+                if (!active) (e.currentTarget as HTMLAnchorElement).style.color = "#000000";
+              }}
+              onMouseLeave={(e) => {
+                if (!active) (e.currentTarget as HTMLAnchorElement).style.color = "#616161";
+              }}
+            >
+              <item.icon size={15} />
+              {item.label}
+            </Link>
+          );
+        })}
+      </div>
+      <ProfileSwitcher />
     </div>
   );
 }

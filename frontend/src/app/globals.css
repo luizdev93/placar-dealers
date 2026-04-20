@@ -243,6 +243,15 @@ body.rv-embed {
   padding-right: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #e0e0e0;
+  overflow: visible;
+}
+
+/* Scroll horizontal só nas abas — evita recortar o dropdown do perfil (overflow no pai). */
+.rv-nav-tabs-scroll {
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 768px) {
@@ -254,8 +263,6 @@ body.rv-embed {
     margin-right: -12px;
     padding-left: 12px;
     padding-right: 12px;
-    overflow-x: auto;
-    white-space: nowrap;
   }
   input, textarea, select {
     font-size: 16px !important;

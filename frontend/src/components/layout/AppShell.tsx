@@ -55,7 +55,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   });
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-white">
+    <div className="flex flex-col min-h-0 overflow-visible bg-white">
       {/* Topbar — identidade Nissan em vermelho, mais compacta */}
       {!hideTopbar && (
         <header className="flex-none h-11 bg-[#D80030] flex items-center px-3 gap-2 z-40 border-b border-[#B5022A]">
