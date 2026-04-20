@@ -39,6 +39,8 @@ Este repositório é um monorepo: o app Next.js fica na pasta **`frontend/`**, n
 
 Sem o Root Directory em `frontend`, a Vercel usa a raiz do Git (só documentação + pasta `frontend`), o build fica vazio ou genérico (~segundos) e qualquer rota pode responder **404 NOT_FOUND** — não é falta de rota no Next.js, e sim o app não ter sido implantado a partir da pasta certa.
 
+O script `npm run build` usa **`next build --webpack`**: com `package.json` também na raiz do monorepo, o Turbopack do Next 16 pode inferir a raiz errada e falhar o build; o webpack evita isso na Vercel e em CI.
+
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
