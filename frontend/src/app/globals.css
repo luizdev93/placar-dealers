@@ -76,6 +76,16 @@
   }
 }
 
+/* ─── Embed iframe (Bubble): altura cresce com o conteúdo, sem barra de rolagem interna ─── */
+html.rv-embed,
+body.rv-embed {
+  overflow-y: visible !important;
+  overflow-x: hidden;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+
 /* ─── Tipografia (valores exatos) ─── */
 
 .page-title {
