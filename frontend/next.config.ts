@@ -2,23 +2,22 @@ import type { NextConfig } from "next";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-/** Pasta do app Next (frontend). Evita falha do Turbopack ao existir package.json na raiz do monorepo. */
-const turbopackRoot = path.dirname(fileURLToPath(import.meta.url));
+/** Pasta do app Next (`frontend/`). */
+const appDir = path.dirname(fileURLToPath(import.meta.url));
+/** Raiz do repositório Git — Next 16 exige o mesmo valor em outputFileTracingRoot e turbopack.root. */
+const monorepoRoot = path.join(appDir, "..");
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: monorepoRoot,
   turbopack: {
-    root: turbopackRoot,
+    root: monorepoRoot,
   },
   async headers() {
     return [
       {
         source: "/(.*)",
         headers: [
-          // Allow embedding in iframes from any origin (for Bubble)
-          {
-            key: "X-Frame-Options",
-            value: "ALLOWALL",
-          },
+          // Embed no Bubble: CSP (ALLOWALL não é valor válido de X-Frame-Options)
           {
             key: "Content-Security-Policy",
             value: "frame-ancestors *;",
