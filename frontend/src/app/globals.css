@@ -1,0 +1,311 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-roboto);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.10 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.10 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.10 0 0);
+  --primary: oklch(0.10 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: oklch(0.10 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.10 0 0);
+  --destructive: oklch(0.45 0.21 20);
+  --border: oklch(0.90 0 0);
+  --input: oklch(0.90 0 0);
+  --ring: oklch(0.10 0 0);
+  --radius: 0.5rem;
+}
+
+/* ─── Base ─── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-roboto), 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #252525;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+/* ─── Tipografia (valores exatos) ─── */
+
+.page-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #616161;
+  display: block;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* ─── Container (card) ─── */
+.bubble-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+/* ─── Bloco cinza (inputs e textos somente leitura) ─── */
+.bubble-block {
+  background: #f1f1f1;
+  border-radius: 8px;
+  padding: 10px;
+  border: none;
+}
+
+/* ─── Botão principal ─── */
+.btn-primary {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 8px;
+  height: 36px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-roboto), 'Roboto', sans-serif;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: #222222;
+}
+.btn-primary:disabled {
+  background: #aaaaaa;
+  cursor: not-allowed;
+}
+
+/* ─── Botão secundário ─── */
+.btn-secondary {
+  background: #ffffff;
+  color: #000000;
+  border-radius: 8px;
+  height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--font-roboto), 'Roboto', sans-serif;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  border-color: #888888;
+  background: #f8f8f8;
+}
+
+/* ─── Botão de paginação ─── */
+.btn-page {
+  width: 44px;
+  height: 44px;
+  background: #000000;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.btn-page:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* ─── Filtros (selects e inputs de busca) ─── */
+.bubble-input {
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: 12px;
+  font-family: var(--font-roboto), 'Roboto', sans-serif;
+  color: #252525;
+  outline: none;
+  width: 100%;
+}
+.bubble-input:focus {
+  border-color: #9e9e9e;
+}
+
+/* ─── Textarea ─── */
+.bubble-textarea {
+  padding: 8px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #ffffff;
+  font-size: 12px;
+  font-family: var(--font-roboto), 'Roboto', sans-serif;
+  color: #252525;
+  outline: none;
+  width: 100%;
+  resize: vertical;
+  line-height: 1.5;
+}
+.bubble-textarea:focus {
+  border-color: #9e9e9e;
+}
+
+/* ─── Container do módulo RV ─── */
+.rv-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px 24px 20px;
+  box-sizing: border-box;
+}
+
+/* ─── Nav de abas ─── */
+.rv-nav {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .rv-content {
+    padding: 0 12px 20px 12px;
+  }
+  .rv-nav {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* ─── Status badges (valores exatos da spec) ─── */
+.badge-rascunho {
+  background-color: #eeeeee;
+  color: #616161;
+  border: 1px solid #dddddd;
+}
+.badge-enviado {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+.badge-lembrete1 {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffe0b2;
+}
+.badge-lembrete2 {
+  background-color: #fff3e0;
+  color: #e65100;
+  border: 1px solid #ffe0b2;
+}
+.badge-assinado {
+  background-color: #e8f5e9;
+  color: #388e3c;
+  border: 1px solid #c8e6c9;
+}
+.badge-expirado {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+/* ─── Autosave ─── */
+.autosave-dot {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ─── Mic recording ─── */
+.mic-recording {
+  animation: mic-pulse 1s ease-in-out infinite;
+}
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(0, 0, 0, 0); }
+}
+
+/* ─── Progress bar ─── */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.progress-animate {
+  animation: progress-fill 1.5s ease-out forwards;
+}
